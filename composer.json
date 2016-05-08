@@ -1,0 +1,37 @@
+{
+    "name": "HumanitySoft/humanity",
+    "description": "Humanity PHP Framework Version 1",
+    "keywords": [
+        "PHP",
+        "humanity",
+        "framework",
+        "VA"
+    ],
+    "homepage": "https://github.com/HumanitySoft/humanity",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Buturlakin Andrey",
+            "email": "xezzus@gmail.com",
+            "homepage": "https://github.com/xezzus",
+            "role": "Founder and project lead"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/HumanitySoft/humanity/issues",
+        "wiki": "https://github.com/HumanitySoft/humanity/wiki",
+        "source": "https://github.com/HumanitySoft/humanity"
+    },
+    "require": {
+        "php": ">=5.6.0"
+    },
+    "autoload": {
+        "psr-4": {"HumanitySoft\\humanity": ""}
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
