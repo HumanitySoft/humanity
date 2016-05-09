@@ -7,7 +7,6 @@ class Apps {
     private static $conf;
     private static $singleton = false;
     private static $dir = null;
-    private static $test = false;
 
     public function __construct($dir=null){
       if(!is_null($dir) && is_dir($dir)) self::$dir = $dir;
@@ -21,6 +20,7 @@ class Apps {
     public function __call($name,$value){
         array_push(self::$application,$name);
         $file = implode('/',self::$application);
+        self::$application = [];
         $nameApp = $file;
         $conf = self::$dir.'/'.$file.'.json';
         if(is_file($conf)) {
@@ -48,11 +48,8 @@ class Apps {
               $func = $singleton;
             }
           }
-          self::$test = true;
           return $func;
         }
     }
-
-
 }
 ?>
