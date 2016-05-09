@@ -7,6 +7,7 @@ class Apps {
     private static $conf;
     private static $singleton = false;
     private static $dir = null;
+    private static $data = [];
 
     public function __construct($dir=null){
       if(!is_null($dir) && is_dir($dir)) self::$dir = $dir;
@@ -22,24 +23,21 @@ class Apps {
         $file = implode('/',self::$application);
         self::$application = [];
         $nameApp = $file;
-        $conf = self::$dir.'/'.$file.'.json';
-        if(is_file($conf)) {
-          $conf = file_get_contents($conf);
-          $conf = json_decode($conf,true);
+        $confFile = self::$dir.'/'.$file.'.json';
+        if(is_file($confFile)) {
+          self::$conf = file_get_contents($confFile);
+          self::$conf = json_decode(self::$conf,true);
         } else {
-          $conf = [];
+          self::$conf = [];
         }
         $file = self::$dir.'/'.$file.'.php';
         if(!is_file($file)) return false;
-        self::$application = [];
         if(is_file($file)) {
           $func = require($file);
-          $app = new self;
-          $app::$conf = $conf;
-          $func = $func->bindTo($app);
           if(is_callable($func)) {
             if(!$singleton = (new Singleton)->get($nameApp)){
               $func = call_user_func_array($func,$value);
+              self::$conf = [];
               if(self::$singleton === true) {
                 (new Singleton)->set($nameApp,$func);
                 self::$singleton = false;
