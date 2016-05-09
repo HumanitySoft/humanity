@@ -7,9 +7,10 @@ class Apps {
     private static $conf;
     private static $singleton = false;
     private static $dir = null;
+    private static $test = false;
 
     public function __construct($dir=null){
-      if(!is_null($dir)) self::$dir = $dir;
+      if(!is_null($dir) && is_dir($dir)) self::$dir = $dir;
     }
 
     public function __get($name){
@@ -47,9 +48,11 @@ class Apps {
               $func = $singleton;
             }
           }
+          self::$test = true;
           return $func;
         }
     }
+
 
 }
 ?>
