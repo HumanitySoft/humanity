@@ -21,14 +21,14 @@ class Apps {
         array_push(self::$application,$name);
         $file = implode('/',self::$application);
         $nameApp = $file;
-        $conf = self::$dir.'/lib/'.$file.'.json';
+        $conf = self::$dir.'/'.$file.'.json';
         if(is_file($conf)) {
           $conf = file_get_contents($conf);
           $conf = json_decode($conf,true);
         } else {
           $conf = [];
         }
-        $file = self::$dir.'/lib/'.$file.'.php';
+        $file = self::$dir.'/'.$file.'.php';
         if(!is_file($file)) return false;
         self::$application = [];
         if(is_file($file)) {
