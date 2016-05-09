@@ -1,4 +1,6 @@
 <?php
+namespace humanitysoft\humanity;
+
 class Singleton {
 
   private static $register = [];
