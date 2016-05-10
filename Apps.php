@@ -7,7 +7,7 @@ class Apps {
     private static $conf;
     private static $singleton = false;
     private static $dir = null;
-    private static $data = [];
+    private static $register = [];
 
     public function __construct($dir=null){
       if(!is_null($dir) && is_dir($dir)) self::$dir = $dir;
